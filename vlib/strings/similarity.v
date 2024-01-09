@@ -1,7 +1,7 @@
 module strings
 
 @[inline]
-fn imin(x u16, y u16) u16 {
+fn imin(x int, y int) int {
 	return if x < y { x } else { y }
 }
 
@@ -19,10 +19,10 @@ pub fn levenshtein_distance(a string, b string) int {
 		return 0
 	}
 
-	mut row := []u16{len: a.len + 1, init: u16(index)}
+	mut row := []int{len: a.len + 1, init: index}
 
 	for i := 1; i < b.len; i++ {
-		mut prev := u16(i)
+		mut prev := i
 		for j := 1; j < a.len; j++ {
 			mut current := row[j - 1] // match
 			if b[i - 1] != a[j - 1] {
